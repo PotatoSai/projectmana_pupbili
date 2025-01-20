@@ -1,45 +1,30 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:projectmana_pupbili/components/app_buttons.dart';
 import 'package:projectmana_pupbili/components/my_text_field.dart';
-import 'package:projectmana_pupbili/pages/home_page.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
 
-  const LoginPage({super.key, required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
-  // login page method
-
-
-  void login() {
-    /*
-
-    fill the auth here......
-
-
-     */
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ),
-    );
-  }
+  final TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surface,
+    return Scaffold(
+      backgroundColor: Theme
+          .of(context)
+          .colorScheme
+          .surface,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -48,16 +33,22 @@ class _LoginPageState extends State<LoginPage> {
             Icon(
               Icons.lock_open_rounded,
               size: 100,
-              color: Theme.of(context).colorScheme.inversePrimary,
+              color: Theme
+                  .of(context)
+                  .colorScheme
+                  .inversePrimary,
             ),
 
             const SizedBox(height: 25),
 
             //Title or Slogan
-            Text("PUPBILI",
+            Text("Welcome PUPIAN!",
               style: TextStyle(
                 fontSize: 16,
-                color: Theme.of(context).colorScheme.inversePrimary,
+                color: Theme
+                    .of(context)
+                    .colorScheme
+                    .inversePrimary,
               ),
             ),
 
@@ -65,9 +56,9 @@ class _LoginPageState extends State<LoginPage> {
 
             //Email
             MyTextField(
-                controller: emailController,
-                hintText: "Email",
-                obscureText: false,
+              controller: emailController,
+              hintText: "Email",
+              obscureText: false,
             ),
 
             const SizedBox(height: 10),
@@ -79,23 +70,34 @@ class _LoginPageState extends State<LoginPage> {
                 obscureText: true),
 
             const SizedBox(height: 10),
-            //Sign In Button
 
+            //Confirm Password
+            MyTextField(
+                controller: confirmPasswordController,
+                hintText: "Confirm password",
+                obscureText: true),
+
+            const SizedBox(height: 10),
+
+            //Sign Up Button
             MyButton(
-                text: "Sign In",
-                onTap: login,
+              text: "Sign Up",
+              onTap: () {},
             ),
 
             const SizedBox(height: 25),
 
-
+            //already have an account? login here
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Not Registered?",
+                  "Already have an account?",
                   style: TextStyle(
-                    color: Theme.of(context).colorScheme.inversePrimary,
+                    color: Theme
+                        .of(context)
+                        .colorScheme
+                        .inversePrimary,
                   ),
                 ),
                 const SizedBox(width: 4,),
@@ -103,16 +105,18 @@ class _LoginPageState extends State<LoginPage> {
                 GestureDetector(
                   onTap: widget.onTap,
                   child: Text(
-                    "Register now",
+                    "Login here",
                     style: TextStyle(
-                      color: Theme.of(context).colorScheme.inversePrimary,
+                      color: Theme
+                          .of(context)
+                          .colorScheme
+                          .inversePrimary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ],
             )
-
 
 
             //Not Registered? Register Now
