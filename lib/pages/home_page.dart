@@ -7,6 +7,7 @@ import 'package:projectmana_pupbili/components/sliver_app_bar.dart';
 import 'package:projectmana_pupbili/components/user_name.dart';
 import 'package:projectmana_pupbili/model/food.dart';
 import 'package:projectmana_pupbili/model/restaurant.dart';
+import 'package:projectmana_pupbili/pages/food_page.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -59,12 +60,20 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             final food = categoryMenu[index];
 
             //return food tile
-            return FoodTile(food: food, onTap: (){}
-            );
+            return FoodTile(
+                food: food,
+                onTap: () => Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                     builder: (context) => FoodPage(food: food),
+              ),
+            ),
+          );
         },
       );
     }).toList();
   }
+
 
 
   Widget build(BuildContext context) {
