@@ -27,14 +27,35 @@ class _FoodPageState extends State<FoodPage> {
               children: [
                 //food name
                 Text(widget.food.name,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
+
+                //food price
+                Text(widget.food.price.toString(),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
+
+                const SizedBox(height: 10,),
 
                 //food description
                 Text(widget.food.description),
+                
+                
+                Text("Add-ons", style: TextStyle(
+                    color: Theme
+                        .of(context)
+                        .colorScheme
+                        .inversePrimary,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
 
                 //addons
                 ListView.builder(
