@@ -20,7 +20,11 @@ class MySliverAppBar extends StatelessWidget {
       actions: [
         //cart button
         IconButton(onPressed: (){},
-            icon: const Icon(Icons.shopping_cart))
+            icon: const Icon(Icons.shopping_cart)),
+
+        //chat button
+        IconButton(onPressed: (){},
+            icon: const Icon(Icons.chat_bubble))
       ],
       backgroundColor: Theme.of(context).colorScheme.surface,
       foregroundColor: Theme.of(context).colorScheme.inversePrimary,

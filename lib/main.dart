@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:projectmana_pupbili/authentication/login_or_register.dart';
+import 'package:projectmana_pupbili/model/restaurant.dart';
 import 'package:projectmana_pupbili/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-      ChangeNotifierProvider(
+      MultiProvider(providers: [
+        //theme provider
+        ChangeNotifierProvider(
           create: (context) => ThemeProvider(),
+        ),
+
+        //restaurant provider
+        ChangeNotifierProvider(
+          create: (context) => Restaurant(),),
+      ],
         child: const MyApp(),
       )
   );
