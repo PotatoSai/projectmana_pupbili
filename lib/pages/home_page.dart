@@ -17,55 +17,49 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
-
-  //tab controller
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  // Tab controller
   late TabController _tabController;
 
-
-
-
   @override
-  void  initState(){
+  void initState() {
     super.initState();
-    _tabController = TabController(length: FoodCategory.values.length, vsync: this);
+    _tabController =
+        TabController(length: FoodCategory.values.length, vsync: this);
   }
 
   @override
-  void  dispose(){
+  void dispose() {
     _tabController.dispose();
     super.dispose();
   }
 
-
-  //method for filter
-
-  List<Food> _filterMenuBycategory(FoodCategory category, List<Food> fullMenu){
+  // Method for filter
+  List<Food> _filterMenuBycategory(
+      FoodCategory category, List<Food> fullMenu) {
     return fullMenu.where((food) => food.category == category).toList();
   }
 
-
-  //return list of foods
-
+  // Return list of foods
   List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
-    return  FoodCategory.values.map((category) {
+    return FoodCategory.values.map((category) {
       List<Food> categoryMenu = _filterMenuBycategory(category, fullMenu);
-
 
       return ListView.builder(
         itemCount: categoryMenu.length,
         physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.zero,
-        itemBuilder: (context, index){
-            final food = categoryMenu[index];
+        itemBuilder: (context, index) {
+          final food = categoryMenu[index];
 
-            //return food tile
-            return FoodTile(
-                food: food,
-                onTap: () => Navigator.push(
-                     context,
-                     MaterialPageRoute(
-                     builder: (context) => FoodPage(food: food),
+          // Return food tile
+          return FoodTile(
+            food: food,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => FoodPage(food: food),
               ),
             ),
           );
@@ -74,39 +68,38 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     }).toList();
   }
 
-
-
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: MyDrawer(),
-      body: NestedScrollView(headerSliverBuilder: (context, innerBoxIsScrolled) => [
-        MySliverAppBar(
-          title: MyTabBar(tabController: _tabController),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          MySliverAppBar(
+            title: MyTabBar(tabController: _tabController),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Divider(
+                  indent: 25,
+                  endIndent: 25,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
 
-              Divider(
-                indent: 25,
-                endIndent: 25,
-                color: Theme.of(context).colorScheme.secondary,
-              ),
+                // My name
+                const MyCurrentName(),
 
-              //my name
-              const MyCurrentName(),
-
-              //description box
-              const MyDescriptionBox(),
-            ],
+                // Description box
+                const MyDescriptionBox(),
+              ],
+            ),
           ),
-        ),
-      ],
-    body: Consumer<Restaurant>(
-      builder: (context, restaurant, child) => TabBarView(
-    controller: _tabController,
-    children: getFoodInThisCategory(restaurant.menu),
+        ],
+        body: Consumer<Restaurant>(
+          builder: (context, restaurant, child) => TabBarView(
+            controller: _tabController,
+            children: getFoodInThisCategory(restaurant.menu),
           ),
-        ), //Consumer
+        ), // Consumer
       ),
     );
   }

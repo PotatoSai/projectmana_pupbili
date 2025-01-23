@@ -1,4 +1,6 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:projectmana_pupbili/model/cart_item.dart';
 
 import 'food.dart';
 
@@ -359,35 +361,100 @@ class Restaurant extends ChangeNotifier {
 
   ];
 
-  /*
+  List<Food> get menu => _menu;
+  List<CartItem> get cart => _cart;
 
-  G E T T E R S
-
-
-
-   */
+  //user cart
+  final List<CartItem> _cart = [];
 
 
-List<Food> get menu => _menu;
+  // add to cart
+  void addToCart(Food food, List<Addon> selectedAddons) {
+      CartItem? cartItem = _cart.firstWhereOrNull((item) {
+        // check if food items are the same
+        bool isSameFood = item.food == food;
+
+        //check if the list of selected addons are the same
+        bool isSameAddons = ListEquality().equals(item.selectedAddons, selectedAddons);
+
+        return isSameFood && isSameAddons;
+
+      });
+
+
+      if (cartItem != null) {
+      cartItem.quantity++;
+  }
+   //otherwise add new cart
+    else{
+      _cart.add(
+      CartItem(
+      food: food,
+      selectedAddons: selectedAddons,),
+      );
+     }
+  notifyListeners();
+    }
+
+  //remove from cart
+  void removeFromCart(CartItem cartItem) {
+  int cartIndex = _cart.indexOf(cartItem);
+
+  if (cartIndex != -1) {
+    if (_cart[cartIndex].quantity > 1) {
+      _cart[cartIndex].quantity--;
+    }else{
+      _cart.removeAt(cartIndex);
+      }
+    }
+  notifyListeners();
+  }
+
+  //get total prize
+  double getTotalPrice(){
+    double total = 0.0;
+
+    for(CartItem cartItem in _cart) {
+      double itemTotal = cartItem.food.price;
+
+      for (Addon addon in cartItem.selectedAddons){
+        itemTotal += addon.price;
+      }
+
+      total += itemTotal * cartItem.quantity;
+    }
+
+    return total;
+  }
+
+  //total number of items in cart
+  int getTotalItemCount() {
+  int totalItemCount = 0;
+
+  for (CartItem cartItem in _cart) {
+    totalItemCount += cartItem.quantity;
+  }
+  return totalItemCount;
+}
+
+  //clear cart
+  void clearCart() {
+  _cart.clear();
+  notifyListeners();
+}
 
 
 
 
-/*
+}
 
-O P E R A T I O N S
+  // remove from cart
 
- */
+  // get total price of cart
 
-// add to cart
+  // get total number of items in cart
 
-// remove from cart
-
-// get total price of cart
-
-// get total number of items in cart
-
-//clear a cart
+  //clear a cart
 
 /*
 
@@ -406,4 +473,4 @@ H E L P E R S
 
 
 
-}
+
