@@ -16,7 +16,7 @@ class _MyChatBotState extends State<MyChatBot> {
 
   List<ChatMessage> messages = [];
   ChatUser currentUser = ChatUser(id: "0", firstName: "User");
-  ChatUser geminiUser = ChatUser(id: "1", firstName: "Gemini", profileImage: "https://seeklogo.com/vector-logo/381983/gemini");
+  ChatUser geminiUser = ChatUser(id: "1", firstName: "PupAI");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
