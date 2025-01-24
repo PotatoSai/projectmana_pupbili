@@ -33,16 +33,16 @@ class MyDescriptionBox extends StatelessWidget {
           //desc
           Column(
             children: [
-              Text("0.99", style: myPrimaryTextStyle,),
-              Text("Delivery Fee", style: mySecondaryTextStyle,),
+              Text("Chao Fan", style: myPrimaryTextStyle,),
+              Text("Popular Now", style: mySecondaryTextStyle,),
             ],
           ),
           //desc
 
           Column(
             children: [
-              Text("15-30min", style: myPrimaryTextStyle,),
-              Text("Delivery Time", style: mySecondaryTextStyle,),
+              Text("Zy Chick N Joy", style: myPrimaryTextStyle,),
+              Text("Loved by Students Now", style: mySecondaryTextStyle,),
             ],
           )
         ],
