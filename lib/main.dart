@@ -1,11 +1,17 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:projectmana_pupbili/chat_bot/const.dart';
 import 'package:projectmana_pupbili/services/auth_gate.dart';
 import 'package:projectmana_pupbili/firebase_options.dart';
 import 'package:projectmana_pupbili/model/restaurant.dart';
 import 'package:projectmana_pupbili/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
+
+
 void main() async {
+  Gemini.init(apiKey: GEMINI_API_KEY);
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
