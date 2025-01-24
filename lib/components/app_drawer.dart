@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectmana_pupbili/components/app_drawer_tile.dart';
+import 'package:projectmana_pupbili/pages/map_page.dart';
 import 'package:projectmana_pupbili/pages/settings_page.dart';
 import 'package:projectmana_pupbili/services/auth_service.dart';
 
@@ -46,13 +47,13 @@ class MyDrawer extends StatelessWidget {
           MyDrawerTile(
               text: "M A P",
               icon: Icons.map_rounded,
-              onTap: () {}
-          ),
-
-          MyDrawerTile(
-              text: "M Y  O R D E R",
-              icon: Icons.fastfood,
-              onTap: () {}
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  MyMap(),),
+                );
+              }
           ),
 
           MyDrawerTile(

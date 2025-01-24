@@ -10,83 +10,109 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<Restaurant>(builder: (context, restaurant, child){
-      //cart
-      final userCart = restaurant.cart;
+    return Consumer<Restaurant>(
+      builder: (context, restaurant, child) {
+        // Get cart items
+        final userCart = restaurant.cart;
+        // Get total price
+        final totalPrice = restaurant.getTotalPrice();
 
-      // scaffold
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text("Cart"),
-          backgroundColor: Colors.transparent,
-          foregroundColor: Theme.of(context).colorScheme.inversePrimary,
-          actions: [
-            //clear cart button
-            IconButton(
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text("Cart"),
+            backgroundColor: Colors.transparent,
+            foregroundColor: Theme.of(context).colorScheme.inversePrimary,
+            actions: [
+              // Clear cart button
+              IconButton(
                 onPressed: () {
                   showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: const Text("Clear the cart?"),
-                        actions: [
-                          //cancel button
-                          TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: const Text("Cancel"),),
-
-
-                          // yes button
-                          TextButton(
-                            onPressed: (){ Navigator.pop(context);
-                              restaurant.clearCart();
-                            },
-                            child: const Text("Yes"),),
-                        ],
-                      ),
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text("Clear the cart?"),
+                      actions: [
+                        // Cancel button
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: const Text("Cancel"),
+                        ),
+                        // Yes button
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            restaurant.clearCart();
+                          },
+                          child: const Text("Yes"),
+                        ),
+                      ],
+                    ),
                   );
                 },
                 icon: const Icon(Icons.delete),
-            ),
-          ],
-        ),
-        body: Column(
-          children: [
-
-            //list of cart
-            Expanded(
-              child: Column(
-                children: [
-                  userCart.isEmpty
-                  ? const Expanded(
-                      child: Center(child: Text("Cart is empty.."),),)
-                      : Expanded(
+              ),
+            ],
+          ),
+          body: Column(
+            children: [
+              // List of cart items
+              Expanded(
+                child: Column(
+                  children: [
+                    userCart.isEmpty
+                        ? const Expanded(
+                      child: Center(child: Text("Cart is empty..")),
+                    )
+                        : Expanded(
                       child: ListView.builder(
                         itemCount: userCart.length,
                         itemBuilder: (context, index) {
-              
-                          //get individual cart item
+                          // Get individual cart item
                           final cartItem = userCart[index];
-              
-                          //return cart tile UI
+                          // Return cart tile UI
                           return MyCartTile(cartItem: cartItem);
-                          }
-                        ),
+                        },
                       ),
-                    ],
+                    ),
+                  ],
                 ),
-            ),
+              ),
 
-            //button to pay
-            MyButton(
-                text: "Go to checkout",
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PaymentPage()
-                  ),
+              // Total Price Display
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: Column(
+                  children: [
+                    Divider(thickness: 1, color: Colors.grey[300]), // Line separator
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Total:",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "₱${totalPrice.toStringAsFixed(2)}", // Format to 2 decimal places
+                          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-            ),
-            const SizedBox(height: 25,),
-          ],
-        ),
+              ),
+
+              // Checkout button
+              MyButton(
+                text: "Go to checkout",
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const PaymentPage()),
+                ),
+              ),
+              const SizedBox(height: 25),
+            ],
+          ),
         );
-    },);
+      },
+    );
   }
 }

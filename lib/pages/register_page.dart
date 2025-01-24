@@ -66,13 +66,11 @@ class _RegisterPageState extends State<RegisterPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             //Logo
-            Icon(
-              Icons.lock_open_rounded,
-              size: 100,
-              color: Theme
-                  .of(context)
-                  .colorScheme
-                  .inversePrimary,
+            Image.asset(
+              'lib/images/logo/pubili.png',
+              height: 100,  // Adjust size
+              width: 100,
+              fit: BoxFit.contain,
             ),
 
             const SizedBox(height: 25),

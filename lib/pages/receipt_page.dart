@@ -4,6 +4,7 @@ import 'package:projectmana_pupbili/components/app_buttons.dart';
 import 'package:projectmana_pupbili/components/app_receipt_tile.dart';
 import 'package:projectmana_pupbili/model/restaurant.dart';
 import 'package:projectmana_pupbili/pages/home_page.dart';
+import 'package:projectmana_pupbili/pages/map_page.dart';
 import 'package:projectmana_pupbili/services/database/firestore.dart';
 import 'package:provider/provider.dart';
 
@@ -37,8 +38,13 @@ class _ReceiptPageState extends State<ReceiptPage> {
       bottomNavigationBar: _buildBottomNavbar(context),
       body: Column(
         children: [
-          MyReceipt(),
-          const SizedBox(height: 10,),
+          Expanded(
+            child: SingleChildScrollView(
+              child: MyReceipt(),
+
+            ),
+
+          ),
           MyButton(
             text: "Go back to Home",
             onTap: () => Navigator.push(
@@ -46,7 +52,8 @@ class _ReceiptPageState extends State<ReceiptPage> {
               MaterialPageRoute(builder: (context) => const HomePage()),
             ),
           ),
-        ], // This closing bracket was missing
+          const SizedBox(height: 15,)
+        ],
       ),
 
     );
@@ -63,6 +70,8 @@ class _ReceiptPageState extends State<ReceiptPage> {
           topRight: Radius.circular(40),
         )
       ),
+
+
       padding: const EdgeInsets.all(25),
 
 
@@ -113,7 +122,13 @@ class _ReceiptPageState extends State<ReceiptPage> {
                 shape: BoxShape.circle,
               ),
                 child: IconButton(
-                    onPressed: (){},
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>  MyMap(),),
+                    );
+                  },
                     icon: const Icon(Icons.location_pin),
                     color: Colors.red,
                 ),

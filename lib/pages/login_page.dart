@@ -49,16 +49,17 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             //Logo
-            Icon(
-              Icons.lock_open_rounded,
-              size: 100,
-              color: Theme.of(context).colorScheme.inversePrimary,
+            Image.asset(
+              'lib/images/logo/pubili.png',
+              height: 100,  // Adjust size
+              width: 100,
+              fit: BoxFit.contain,
             ),
 
             const SizedBox(height: 25),
 
             //Title or Slogan
-            Text("PUPBILI",
+            Text("Tara, Kain!",
               style: TextStyle(
                 fontSize: 16,
                 color: Theme.of(context).colorScheme.inversePrimary,

@@ -21,10 +21,8 @@ class Food{
 
 
 enum FoodCategory {
-  chicken,
-  pork,
-  desserts,
   meals,
+  desserts,
   sandwiches,
   drinks,
 }

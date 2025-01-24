@@ -14,9 +14,9 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Chicken Shawarma",
       description: "A delicious Middle Eastern wrap filled with grilled chicken, fresh veggies, and flavorful sauce.",
-      imagePath: "lib/images/chicken/chicken_shawarma.webp",
+      imagePath: "lib/images/meals/chicken_shawarma.png",
       price: 75.00,
-      category: FoodCategory.chicken,
+      category: FoodCategory.meals,
       availableAddons: [
         Addon(name: "Extra Chicken", price: 10.00),
         Addon(name: "Cheese", price: 15.00),
@@ -27,9 +27,9 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Korean Fried Chicken",
       description: "Crispy and juicy double-fried chicken glazed with a sweet and spicy Korean sauce.",
-      imagePath: "lib/images/chicken/korean_fried_chicken.jpg",
+      imagePath: "lib/images/meals/korean_fried_chicken.png",
       price: 180.00,
-      category: FoodCategory.chicken,
+      category: FoodCategory.meals,
       availableAddons: [
         Addon(name: "Extra Sauce", price: 20.00),
         Addon(name: "Cheese Dip", price: 25.00),
@@ -39,9 +39,9 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Buffalo Wings",
       description: "Spicy and tangy chicken wings served with a side of ranch or blue cheese dressing.",
-      imagePath: "lib/images/chicken/buffalo_wings.webp",
+      imagePath: "lib/images/meals/buffalo_wings.png",
       price: 150.00,
-      category: FoodCategory.chicken,
+      category: FoodCategory.meals,
       availableAddons: [
         Addon(name: "Extra Spicy", price: 15.00),
         Addon(name: "Garlic Parmesan", price: 20.00),
@@ -51,9 +51,9 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Chicken Adobo",
       description: "A classic Filipino dish made with chicken braised in soy sauce, vinegar, and garlic.",
-      imagePath: "lib/images/chicken/chicken_adobo.jpg",
+      imagePath: "lib/images/meals/chicken_adobo.png",
       price: 120.00,
-      category: FoodCategory.chicken,
+      category: FoodCategory.meals,
       availableAddons: [
         Addon(name: "Boiled Egg", price: 15.00),
         Addon(name: "Extra Rice", price: 20.00),
@@ -63,9 +63,9 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Hainanese Chicken Rice",
       description: "Steamed chicken served with fragrant rice, ginger sauce, and chili dip.",
-      imagePath: "lib/images/chicken/hainanese_chicken_rice.jpg",
+      imagePath: "lib/images/meals/hainanese_chicken_rice.png",
       price: 160.00,
-      category: FoodCategory.chicken,
+      category: FoodCategory.meals,
       availableAddons: [
         Addon(name: "Extra Rice", price: 20.00),
         Addon(name: "Soy Sauce Dip", price: 10.00),
@@ -78,9 +78,9 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Lechon Kawali",
       description: "Crispy deep-fried pork belly served with liver sauce or spicy vinegar.",
-      imagePath: "lib/images/pork/lechon_kawali.jpg",
+      imagePath: "lib/images/meals/lechon_kawali.png",
       price: 160.00,
-      category: FoodCategory.pork,
+      category: FoodCategory.meals,
       availableAddons: [
         Addon(name: "Extra Skin", price: 30.00),
         Addon(name: "Chili Vinegar", price: 15.00),
@@ -89,9 +89,9 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Pork Sisig",
       description: "Sizzling chopped pork cheeks with onions, chili, and creamy mayonnaise.",
-      imagePath: "lib/images/pork/pork_sisig.jpg",
+      imagePath: "lib/images/meals/pork_sisig.png",
       price: 140.00,
-      category: FoodCategory.pork,
+      category: FoodCategory.meals,
       availableAddons: [
         Addon(name: "Egg", price: 15.00),
         Addon(name: "Extra Mayo", price: 10.00),
@@ -100,9 +100,9 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Pork BBQ",
       description: "Grilled marinated pork skewers served with a sweet and smoky glaze.",
-      imagePath: "lib/images/pork/pork_bbq.jpg",
+      imagePath: "lib/images/meals/pork_bbq.png",
       price: 90.00,
-      category: FoodCategory.pork,
+      category: FoodCategory.meals,
       availableAddons: [
         Addon(name: "Extra Stick", price: 30.00),
         Addon(name: "Spicy Glaze", price: 10.00),
@@ -111,9 +111,9 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Crispy Pata",
       description: "Deep-fried pork leg with crispy skin and tender meat, best served with soy vinegar sauce.",
-      imagePath: "lib/images/pork/crispy_pata.jpg",
+      imagePath: "lib/images/meals/crispy_pata.png",
       price: 350.00,
-      category: FoodCategory.pork,
+      category: FoodCategory.meals,
       availableAddons: [
         Addon(name: "Extra Vinegar Sauce", price: 15.00),
         Addon(name: "Chopped Garlic", price: 10.00),
@@ -122,9 +122,9 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Pork Sinigang",
       description: "A tangy and savory pork stew with tamarind broth, vegetables, and tender pork cuts.",
-      imagePath: "lib/images/pork/pork_sinigang.jpg",
+      imagePath: "lib/images/meals/pork_sinigang.png",
       price: 140.00,
-      category: FoodCategory.pork,
+      category: FoodCategory.meals,
       availableAddons: [
         Addon(name: "Extra Tamarind Soup", price: 20.00),
         Addon(name: "Extra Vegetables", price: 25.00),
@@ -136,7 +136,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Leche Flan",
       description: "A creamy caramel custard dessert with a smooth and rich texture.",
-      imagePath: "lib/images/desserts/leche_flan.jpg",
+      imagePath: "lib/images/desserts/leche_flan.png",
       price: 70.00,
       category: FoodCategory.desserts,
       availableAddons: [
@@ -146,7 +146,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Halo-Halo",
       description: "A refreshing Filipino dessert with crushed ice, milk, beans, jellies, and ice cream.",
-      imagePath: "lib/images/desserts/halo_halo.jpg",
+      imagePath: "lib/images/desserts/halo_halo.png",
       price: 120.00,
       category: FoodCategory.desserts,
       availableAddons: [
@@ -156,7 +156,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Chocolate Lava Cake",
       description: "A decadent chocolate cake with a gooey melted center, served with vanilla ice cream.",
-      imagePath: "lib/images/desserts/chocolate_lava_cake.jpg",
+      imagePath: "lib/images/desserts/chocolate_lava_cake.png",
       price: 150.00,
       category: FoodCategory.desserts,
       availableAddons: [
@@ -166,7 +166,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Mango Float",
       description: "A no-bake layered dessert with graham crackers, whipped cream, and fresh mango slices.",
-      imagePath: "lib/images/desserts/mango_float.webp",
+      imagePath: "lib/images/desserts/mango_float.png",
       price: 110.00,
       category: FoodCategory.desserts,
       availableAddons: [
@@ -176,7 +176,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Ube Cheesecake",
       description: "A creamy cheesecake infused with sweet and nutty ube (purple yam).",
-      imagePath: "lib/images/desserts/ube_cheesecake.jpg",
+      imagePath: "lib/images/desserts/ube_cheesecake.png",
       price: 180.00,
       category: FoodCategory.desserts,
       availableAddons: [
@@ -190,7 +190,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Beef Tapa",
       description: "Filipino-style marinated beef served with garlic rice and a fried egg.",
-      imagePath: "lib/images/meals/beef_tapa.jpg",
+      imagePath: "lib/images/meals/beef_tapa.png",
       price: 140.00,
       category: FoodCategory.meals,
       availableAddons: [
@@ -201,7 +201,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Bangsilog",
       description: "Fried boneless bangus (milkfish) paired with garlic rice and egg.",
-      imagePath: "lib/images/meals/bangsilog.jpg",
+      imagePath: "lib/images/meals/bangsilog.png",
       price: 130.00,
       category: FoodCategory.meals,
       availableAddons: [
@@ -212,7 +212,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Bistek Tagalog",
       description: "Tender beef slices in a tangy soy sauce and calamansi sauce, served with rice.",
-      imagePath: "lib/images/meals/bistek_tagalog.jpg",
+      imagePath: "lib/images/meals/bistek_tagalog.png",
       price: 150.00,
       category: FoodCategory.meals,
       availableAddons: [
@@ -223,7 +223,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Salisbury Steak",
       description: "Beef patties smothered in mushroom gravy, served with mashed potatoes or rice.",
-      imagePath: "lib/images/meals/salisbury_steak.webp",
+      imagePath: "lib/images/meals/salisbury_steak.png",
       price: 170.00,
       category: FoodCategory.meals,
       availableAddons: [
@@ -234,7 +234,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Grilled Salmon",
       description: "Freshly grilled salmon fillet with lemon butter sauce, served with rice or veggies.",
-      imagePath: "lib/images/meals/grilled_salmon.jpg",
+      imagePath: "lib/images/meals/grilled_salmon.png",
       price: 250.00,
       category: FoodCategory.meals,
       availableAddons: [
@@ -248,7 +248,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "BLT Sandwich",
       description: "Classic sandwich with crispy bacon, fresh lettuce, and tomatoes on toasted bread.",
-      imagePath: "lib/images/sandwiches/blt_sandwich.jpg",
+      imagePath: "lib/images/sandwiches/blt_sandwich.png",
       price: 100.00,
       category: FoodCategory.sandwiches,
       availableAddons: [
@@ -259,7 +259,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Clubhouse Sandwich",
       description: "Layered sandwich with chicken, ham, bacon, lettuce, tomato, and mayo.",
-      imagePath: "lib/images/sandwiches/clubhouse_sandwich.webp",
+      imagePath: "lib/images/sandwiches/clubhouse_sandwich.png",
       price: 130.00,
       category: FoodCategory.sandwiches,
       availableAddons: [
@@ -270,7 +270,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Grilled Cheese",
       description: "Golden-brown sandwich with gooey melted cheese inside.",
-      imagePath: "lib/images/sandwiches/grilled_cheese.jpg",
+      imagePath: "lib/images/sandwiches/grilled_cheese.png",
       price: 90.00,
       category: FoodCategory.sandwiches,
       availableAddons: [
@@ -281,7 +281,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Philly Cheesesteak",
       description: "Sliced beef with melted cheese and sautéed onions in a hoagie roll.",
-      imagePath: "lib/images/sandwiches/philly_cheesesteak.jpg",
+      imagePath: "lib/images/sandwiches/philly_cheesesteak.png",
       price: 150.00,
       category: FoodCategory.sandwiches,
       availableAddons: [
@@ -292,7 +292,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Chicken Pesto Sandwich",
       description: "Grilled chicken with pesto sauce and mozzarella on ciabatta bread.",
-      imagePath: "lib/images/sandwiches/chicken_pesto_sandwich.jpg",
+      imagePath: "lib/images/sandwiches/chicken_pesto_sandwich.png",
       price: 120.00,
       category: FoodCategory.sandwiches,
       availableAddons: [
@@ -307,7 +307,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Iced Coffee",
       description: "Chilled coffee with milk and sweetener, served over ice.",
-      imagePath: "lib/images/drinks/iced_coffee.jpg",
+      imagePath: "lib/images/drinks/iced_coffee.png",
       price: 90.00,
       category: FoodCategory.drinks,
       availableAddons: [
@@ -318,7 +318,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Milk Tea",
       description: "Sweetened tea with milk and chewy tapioca pearls.",
-      imagePath: "lib/images/drinks/milk_tea.webp",
+      imagePath: "lib/images/drinks/milk_tea.png",
       price: 110.00,
       category: FoodCategory.drinks,
       availableAddons: [
@@ -329,7 +329,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Fresh Mango Shake",
       description: "Refreshing blended mango drink with a hint of milk and sugar.",
-      imagePath: "lib/images/drinks/mango_shake.jpg",
+      imagePath: "lib/images/drinks/mango_shake.png",
       price: 100.00,
       category: FoodCategory.drinks,
       availableAddons: [
@@ -340,7 +340,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Strawberry Lemonade",
       description: "Tangy and sweet lemonade infused with fresh strawberries.",
-      imagePath: "lib/images/drinks/strawberry_lemonade.jpg",
+      imagePath: "lib/images/drinks/strawberry_lemonade.png",
       price: 95.00,
       category: FoodCategory.drinks,
       availableAddons: [
@@ -351,7 +351,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Hot Chocolate",
       description: "Rich and creamy hot chocolate topped with marshmallows.",
-      imagePath: "lib/images/drinks/hot_chocolate.webp",
+      imagePath: "lib/images/drinks/hot_chocolate.png",
       price: 80.00,
       category: FoodCategory.drinks,
       availableAddons: [
