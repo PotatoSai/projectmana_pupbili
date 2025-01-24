@@ -362,11 +362,15 @@ class Restaurant extends ChangeNotifier {
 
   ];
 
-  List<Food> get menu => _menu;
-  List<CartItem> get cart => _cart;
-
   //user cart
   final List<CartItem> _cart = [];
+
+  //username can change
+  String _userName = 'PUPian';
+
+  List<Food> get menu => _menu;
+  List<CartItem> get cart => _cart;
+  String get userName => _userName;
 
 
   // add to cart
@@ -444,6 +448,12 @@ class Restaurant extends ChangeNotifier {
   notifyListeners();
 }
 
+  //update the username
+  void updateUserName (String newUser) {
+    _userName = newUser;
+    notifyListeners();
+  }
+
   String displayCartReceipt() {
     final receipt = StringBuffer();
     receipt.writeln("Here's your receipt.");
@@ -455,7 +465,7 @@ class Restaurant extends ChangeNotifier {
 
     receipt.writeln(formattedDate);
     receipt.writeln();
-    receipt.writeln("-----------");
+    receipt.writeln("______________________");
 
 
     for (final cartItem in _cart) {
@@ -466,10 +476,12 @@ class Restaurant extends ChangeNotifier {
       }
       receipt.writeln();
     }
-    receipt.writeln("___________");
+    receipt.writeln("______________________");
     receipt.writeln();
     receipt.writeln("Total Items: ${getTotalItemCount()}");
     receipt.writeln("Total Price: ${_formatPrice(getTotalPrice())}");
+    receipt.writeln();
+    receipt.writeln("Customer Name: $userName");
 
 
     return receipt.toString();
@@ -492,22 +504,6 @@ class Restaurant extends ChangeNotifier {
 
 }
 
-
-
-/*
-
-
-H E L P E R S
-
-
- */
-
-
-//generate receipt
-
-// format double value into money
-
-// format list of addons into string summary
 
 
 

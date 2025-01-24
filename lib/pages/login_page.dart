@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projectmana_pupbili/components/app_buttons.dart';
 import 'package:projectmana_pupbili/components/my_text_field.dart';
-import 'package:projectmana_pupbili/pages/home_page.dart';
+import 'package:projectmana_pupbili/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
@@ -20,20 +20,24 @@ class _LoginPageState extends State<LoginPage> {
   // login page method
 
 
-  void login() {
-    /*
+  void login() async {
+    // get instance of auth service
+    final _authService = AuthService();
 
-    fill the auth here......
+    //try sign in
+    try {
+      await _authService.signInWithEmailPassword(emailController.text, passwordController.text);
+    }
 
-
-     */
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ),
-    );
+    //display any errors
+    catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()),
+          )
+      );
+    }
   }
 
   @override

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:projectmana_pupbili/components/app_buttons.dart';
 import 'package:projectmana_pupbili/components/my_text_field.dart';
+import 'package:projectmana_pupbili/services/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
@@ -17,6 +18,41 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
+
+
+  void register() async {
+    //get auth service
+    final _authService = AuthService();
+
+
+
+  if (passwordController.text == confirmPasswordController.text) {
+    // try creating user
+    try {
+      await _authService.signUpWithEmailPassword(emailController.text, passwordController.text);
+     }
+     //display any errors
+    catch (e) {
+      showDialog(
+          context: context, 
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()),
+          )
+      );
+    }
+   }
+
+  //password dont match
+  else {
+    showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+          title: Text("Password don't match!"),
+        )
+    );
+  }
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +118,7 @@ class _RegisterPageState extends State<RegisterPage> {
             //Sign Up Button
             MyButton(
               text: "Sign Up",
-              onTap: () {},
+              onTap: register,
             ),
 
             const SizedBox(height: 25),

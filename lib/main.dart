@@ -1,10 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:projectmana_pupbili/authentication/login_or_register.dart';
+import 'package:projectmana_pupbili/services/auth_gate.dart';
+import 'package:projectmana_pupbili/firebase_options.dart';
 import 'package:projectmana_pupbili/model/restaurant.dart';
 import 'package:projectmana_pupbili/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-void main() {
   runApp(
       MultiProvider(providers: [
         //theme provider
@@ -28,7 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginOrRegister(),
+      home: const AuthGate(),
       theme: Provider.of<ThemeProvider>(context).themeData
     );
   }

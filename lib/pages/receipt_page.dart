@@ -1,27 +1,56 @@
 
 import 'package:flutter/material.dart';
+import 'package:projectmana_pupbili/components/app_buttons.dart';
 import 'package:projectmana_pupbili/components/app_receipt_tile.dart';
+import 'package:projectmana_pupbili/model/restaurant.dart';
+import 'package:projectmana_pupbili/pages/home_page.dart';
+import 'package:projectmana_pupbili/services/database/firestore.dart';
+import 'package:provider/provider.dart';
 
-class ReceiptPage extends StatelessWidget {
+class ReceiptPage extends StatefulWidget {
   const ReceiptPage({super.key});
+
+  @override
+  State<ReceiptPage> createState() => _ReceiptPageState();
+}
+
+class _ReceiptPageState extends State<ReceiptPage> {
+  //get access to db
+  FirestoreService db = FirestoreService();
+
+  @override
+  void initState() {
+    super.initState();
+
+    //submit the data
+    String receipt = context.read<Restaurant>().displayCartReceipt();
+    db.saveOrderToDatabase(receipt);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("We're Cooking!"),
+        title: Text("Preparing your food..."),
         backgroundColor: Colors.transparent,
       ),
       bottomNavigationBar: _buildBottomNavbar(context),
       body: Column(
         children: [
           MyReceipt(),
-        ],
+          const SizedBox(height: 10,),
+          MyButton(
+            text: "Go back to Home",
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePage()),
+            ),
+          ),
+        ], // This closing bracket was missing
       ),
+
     );
   }
-
-
 
   //custom nav bar
   Widget _buildBottomNavbar(BuildContext context) {
@@ -35,6 +64,8 @@ class ReceiptPage extends StatelessWidget {
         )
       ),
       padding: const EdgeInsets.all(25),
+
+
       child: Row(
         children: [
 
@@ -49,9 +80,9 @@ class ReceiptPage extends StatelessWidget {
           ),
 
           const SizedBox(width: 10,),
-          
-          
-          
+
+
+
           //store details
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,12 +136,11 @@ class ReceiptPage extends StatelessWidget {
 
             ],
           )
-          
+
 
 
         ],
       ),
     );
   }
-
 }
