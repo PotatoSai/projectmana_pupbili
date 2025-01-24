@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projectmana_pupbili/components/app_buttons.dart';
 import 'package:projectmana_pupbili/components/app_cart_tile.dart';
 import 'package:projectmana_pupbili/model/restaurant.dart';
+import 'package:projectmana_pupbili/pages/payment_page.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
@@ -78,7 +79,10 @@ class CartPage extends StatelessWidget {
             //button to pay
             MyButton(
                 text: "Go to checkout",
-                onTap: (){}),
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PaymentPage()
+                  ),
+                ),
+            ),
             const SizedBox(height: 25,),
           ],
         ),

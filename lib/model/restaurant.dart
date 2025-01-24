@@ -443,18 +443,33 @@ class Restaurant extends ChangeNotifier {
   notifyListeners();
 }
 
+  String displayCartReceipt() {
+    final receipt = StringBuffer();
+    receipt.writeln("Here's your receipt.")
+    receipt.writeln();
+
+
+    //format the date
+    String formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss')
+  }
+
+
+  String _formatPrice(double price) {
+    return "\ ₱${price.toStringAsFixed(2)}";
+  }
+
+  String _formatAddon (List<Addon> addons) {
+    return addons
+        .map((addon) => "${addon.name} (${_formatPrice(addon.price)})")
+        .join();
+  }
+
 
 
 
 }
 
-  // remove from cart
 
-  // get total price of cart
-
-  // get total number of items in cart
-
-  //clear a cart
 
 /*
 
