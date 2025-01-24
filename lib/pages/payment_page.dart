@@ -31,10 +31,13 @@ class _PaymentPageState extends State<PaymentPage> {
           actions: [
             //yes button
             TextButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ReceiptPage()),
-              ),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ReceiptPage()),
+                );
+              },
               child: const Text("Yes"),
             ),
 
@@ -56,7 +59,7 @@ class _PaymentPageState extends State<PaymentPage> {
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                Text("Please Pay: ${amountController.text}")
+                Text("Please prepare your total at the counter.")
               ],
             ),
           ),

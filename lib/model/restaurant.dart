@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 import 'package:projectmana_pupbili/model/cart_item.dart';
 
 import 'food.dart';
@@ -445,12 +446,34 @@ class Restaurant extends ChangeNotifier {
 
   String displayCartReceipt() {
     final receipt = StringBuffer();
-    receipt.writeln("Here's your receipt.")
+    receipt.writeln("Here's your receipt.");
     receipt.writeln();
 
 
     //format the date
-    String formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss')
+    String formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+
+    receipt.writeln(formattedDate);
+    receipt.writeln();
+    receipt.writeln("-----------");
+
+
+    for (final cartItem in _cart) {
+      receipt.writeln(("${cartItem.quantity} *  ${cartItem.food.name} - ${_formatPrice(cartItem.food.price)}"));
+
+      if (cartItem.selectedAddons.isNotEmpty) {
+        receipt.writeln("   Add-ons: ${_formatAddon(cartItem.selectedAddons)}");
+      }
+      receipt.writeln();
+    }
+    receipt.writeln("___________");
+    receipt.writeln();
+    receipt.writeln("Total Items: ${getTotalItemCount()}");
+    receipt.writeln("Total Price: ${_formatPrice(getTotalPrice())}");
+
+
+    return receipt.toString();
+
   }
 
 
@@ -458,9 +481,9 @@ class Restaurant extends ChangeNotifier {
     return "\ ₱${price.toStringAsFixed(2)}";
   }
 
-  String _formatAddon (List<Addon> addons) {
+  String _formatAddon(List<Addon> addons) {
     return addons
-        .map((addon) => "${addon.name} (${_formatPrice(addon.price)})")
+        .map((addon) => "${addon.name} (${_formatPrice(addon.price)}), ")
         .join();
   }
 
